@@ -13,8 +13,8 @@ jobs:
     steps:
       - uses: TobKed/github-forks-sync-action@master
         with:
-          upstream_repository: ZhaoUncle/test1
-          target_repository: AomineKing/test1
+          upstream_repository: ZhaoUncle/test2
+          target_repository: AomineKing/test2
           upstream_branch: main
           target_branch: main
           force: true
