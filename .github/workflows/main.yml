@@ -1,21 +1,17 @@
-name: 'Usptream Sync'
+# .github/workflows/sync.yml
+name: Sync Fork
 
 on:
+  push: # push 时触发, 主要是为了测试配置有没有问题
   schedule:
-    - cron:  '0 7 * * 1,4'
-    # scheduled at 07:00 every Monday and Thursday
-
-  workflow_dispatch:  # click the button on Github repo!
-
+    - cron: '0 * * * *' # 每小时 0分触发, 对于一些更新不那么频繁的项目可以设置为每天一次, 低碳一点
 jobs:
-  update_external_airflow_fork:
+  repo-sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: TobKed/github-forks-sync-action@master
+      - uses: TG908/fork-sync@v1.6.3
         with:
-          upstream_repository: ZhaoUncle/test2
-          target_repository: AomineKing/test2
-          upstream_branch: main
-          target_branch: main
-          force: true
-          tags: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          owner: ZhaoUncle
+          head: main
+          base: main
