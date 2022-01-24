@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: tgymnich/fork-sync@v1.2.1
         with:
+          token: ${{ secrets.PERSONAL_TOKEN }}
           owner: AomineKing
           base: main
           head: main
